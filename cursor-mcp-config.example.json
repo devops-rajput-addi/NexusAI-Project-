@@ -1,0 +1,22 @@
+{
+  "_comment": "Copy the 'devops-hub' section to your ~/.cursor/mcp.json file",
+  "mcpServers": {
+    "devops-hub": {
+      "command": "node",
+      "args": ["C:/Users/Aditya Rajput/Desktop/CCTECH_Hackthon/dist/index.js"],
+      "env": {
+        "_section1": "=== JIRA SERVER ===",
+        "JIRA_BASE_URL": "https://jira.autodesk.com",
+        "JIRA_API_TOKEN": "YOUR_JIRA_PAT",
+
+        "_section2": "=== GITHUB (Personal Account) ===",
+        "GITHUB_TOKEN": "YOUR_GITHUB_TOKEN",
+
+        "_section3": "=== DOCUMENTATION OUTPUT (GitHub) ===",
+        "DOCS_OUTPUT_DIR": "./generated-docs",
+        "DOCS_GITHUB_OWNER": "YOUR_GITHUB_USERNAME",
+        "DOCS_GITHUB_REPO": "YOUR_REPO_NAME"
+      }
+    }
+  }
+}

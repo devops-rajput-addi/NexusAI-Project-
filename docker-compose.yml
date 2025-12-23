@@ -1,0 +1,62 @@
+# DevOps MCP Hub - Docker Compose Configuration
+# Use this for local development and testing
+
+version: '3.8'
+
+services:
+  devops-mcp-hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: devops-mcp-hub
+    restart: unless-stopped
+    
+    # Environment variables - copy from .env file or set directly
+    env_file:
+      - .env
+    
+    # Alternative: Set environment variables directly
+    # environment:
+    #   # Jira Configuration (Required)
+    #   - JIRA_BASE_URL=${JIRA_BASE_URL}
+    #   - JIRA_EMAIL=${JIRA_EMAIL}
+    #   - JIRA_API_TOKEN=${JIRA_API_TOKEN}
+    #   - JIRA_IS_CLOUD=${JIRA_IS_CLOUD:-false}
+    #   
+    #   # GitHub Configuration (Optional)
+    #   - GITHUB_TOKEN=${GITHUB_TOKEN}
+    #   - GITHUB_BASE_URL=${GITHUB_BASE_URL:-https://api.github.com}
+    #   
+    #   # Confluence Configuration (Optional)
+    #   - CONFLUENCE_BASE_URL=${CONFLUENCE_BASE_URL}
+    #   - CONFLUENCE_EMAIL=${CONFLUENCE_EMAIL}
+    #   - CONFLUENCE_API_TOKEN=${CONFLUENCE_API_TOKEN}
+    #   - CONFLUENCE_IS_CLOUD=${CONFLUENCE_IS_CLOUD:-false}
+    
+    # Standard I/O for MCP protocol
+    stdin_open: true
+    tty: true
+    
+    # Security settings
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+    
+    # Networking - no ports needed as MCP uses stdio
+    network_mode: bridge
+
+# For multi-service deployments or with additional tools
+# networks:
+#   mcp-network:
+#     driver: bridge
+

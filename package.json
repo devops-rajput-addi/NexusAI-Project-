@@ -1,0 +1,41 @@
+{
+  "name": "devops-mcp-hub",
+  "version": "2.0.0",
+  "description": "Unified DevOps MCP Hub - AI-powered integration for Jira, GitHub, and Confluence",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "prepare": "npm run build",
+    "docker:build": "docker build -t devops-mcp-hub .",
+    "docker:run": "docker run --env-file .env devops-mcp-hub"
+  },
+  "keywords": [
+    "mcp",
+    "jira",
+    "github",
+    "confluence",
+    "ai",
+    "devops",
+    "model-context-protocol",
+    "atlassian",
+    "sprint-analysis",
+    "workload-dashboard"
+  ],
+  "author": "CCTECH Hackathon Team",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
